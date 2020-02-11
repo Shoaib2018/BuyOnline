@@ -1,0 +1,90 @@
+﻿@model IEnumerable<BuyOnline.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div id="middle" style="top:auto">    
+    <table class="table" border="1">
+        <tr>
+            <th colspan="9" align="center"><h1>Orders</h1></th>
+        </tr>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.PlacedDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ammount)
+            </th>
+            
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalAmmount)
+            </th>
+            <th>
+                Action
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlacedDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliveryDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliveryTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ammount)
+                </td>
+                
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalAmmount)
+                </td>
+                
+                <td>
+                    @if (item.Status == "Pending")
+                    {
+                        @Html.ActionLink("Ready For Shippment", "Ready", new { id = item.Id }) 
+                    }
+                    else if (item.Status == "Ready For Shippment")
+                    {
+                        @Html.ActionLink("Delivered", "Delivered", new { id = item.Id })
+                    }
+                    
+                </td>
+                <td>@Html.ActionLink("Details", "Details", new { id = item.Id, cid = item.CustomerId })</td>
+            </tr>
+        }
+
+    </table>
+</div>
+

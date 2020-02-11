@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68e356bf3b2d4b2a8582efe7b938c23a" Name="Diagram1">
+        <EntityTypeShape EntityType="BuyOnlineModel.Admin" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Cart" Width="1.5" PointX="7.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Category" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Comment" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Customer" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Discount" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Inbox" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Notification" Width="1.5" PointX="10.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Order" Width="1.5" PointX="5.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BuyOnlineModel.Product" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Inbox_Admins" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Carts_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Carts_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Carts_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Comments_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Comments_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Customers_Discounts" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Inbox_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Notifications_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="BuyOnlineModel.FK_Notifications_Orders" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

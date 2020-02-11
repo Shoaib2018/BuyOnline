@@ -1,0 +1,29 @@
+﻿@model List<BuyOnline.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div id="middle" style="top:10px">
+    @for (var i = 0; i < Model.Count(); i++)
+    {
+        var id = Model[i].Id;
+        var image = Model[i].Image;
+        <div style="display: inline-block">
+            <div>
+                <a href="@Url.Action("Details", "Product", new { id = id })"><img src="../Image/@image" width="200" height="150" /></a>
+            </div>
+            <div>
+                @Model[i].Title
+                <div>
+                    Unit Price: @Model[i].UnitPrice
+                </div>
+            </div>
+        </div>
+        if (i % 5 == 4)
+        {
+            <br />
+        }
+    }
+</div>

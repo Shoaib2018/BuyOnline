@@ -1,0 +1,68 @@
+﻿@model BuyOnline.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div id="middle" style="top:auto">
+    @Html.ActionLink("Back to List", "Index")
+    <h4>Order Details</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlacedDay) @Html.DisplayFor(model => model.PlacedDay)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryDay) @Html.DisplayFor(model => model.DeliveryDay)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryTime) @Html.DisplayFor(model => model.DeliveryTime)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName) @Html.DisplayFor(model => model.CustomerName)
+        </dt>
+        Contact @Session["customercontact"]
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Ammount) @Html.DisplayFor(model => model.Ammount)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount) @Html.DisplayFor(model => model.Discount)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinalAmmount) @Html.DisplayFor(model => model.FinalAmmount)
+        </dt>
+        
+        Delivery Address @Session["customeraddressbook"]
+    </dl>
+    <table border="1">
+        <tr>
+            <th colspan="5" align="center">Cart</th>
+        </tr>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Title</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+        </tr>
+        @for(int i=0;i<=(int)Session["countcart"];i++)
+        {
+            <tr>
+                <td>@Session["ocpid" + i.ToString()]</td>
+                <td>@Session["ocpt" + i.ToString()]</td>
+                <td>@Session["ocup" + i.ToString()]</td>
+                <td>@Session["ocq" + i.ToString()]</td>
+                <td>@Session["octp" + i.ToString()]</td>
+            </tr>
+        }
+    </table>
+</div>
+        

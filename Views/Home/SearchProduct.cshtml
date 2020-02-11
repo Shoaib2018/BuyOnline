@@ -1,0 +1,33 @@
+﻿@model List<BuyOnline.Models.Product>
+
+@{
+    ViewBag.Title = "SearchProduct";
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+}
+
+@{var url = HttpContext.Current.Request.Url.AbsoluteUri;}
+<div id="middle" style="left:50px ; top:50px">
+    @for (var i = 0; i < Model.Count(); i++)
+    {
+        var id = Model[i].Id;
+        var image = Model[i].Image;
+        <div style="display: inline-block">
+            <div>
+                <a href="@Url.Action("Details", "Home", new { id = id })"><img src="../Image/@image" width="200" height="150" /></a>
+            </div>
+            <div>
+                @Model[i].Title
+                <div>
+                    Unit Price: @Model[i].UnitPrice
+                </div>
+            </div>
+            <div>
+                <a href="~/CustomerLogin/Login">Login To Buy</a>
+            </div>
+        </div>
+        if (i % 6 == 7)
+        {
+            <br />
+        }
+    }
+</div>

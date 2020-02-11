@@ -1,0 +1,85 @@
+﻿@model IEnumerable<BuyOnline.Models.Cart>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+<div id="middlediv">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotatlPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.DeliveryTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Title)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotatlPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.DeliveryTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Title)
+                </td>
+                <td>
+                <td>
+                    @{var url = HttpContext.Current.Request.Url.AbsoluteUri;}
+                    @Html.ActionLink("+", "../Cart/Increment", new { id = item.Id, pid = item.ProductId, unitprice = item.UnitPrice, ur = url }, new { @class = "increment" }) |
+                    @Html.ActionLink("-", "../Cart/Decrement", new { id = item.Id, pid = item.ProductId, unitprice = item.UnitPrice, ur = url }, new { @class = "decrement" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, pid = item.ProductId, quantity = item.Quantity, ur = url })
+                </td>
+            </tr>
+        }
+    </table>
+    <table>
+        <tr>
+            <td>Total Ammount @TempData["totalammount"]</td>
+        </tr>
+        <tr>
+            <td>Discount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @TempData["discount"] (@TempData["discountrate"]%)</td>
+        </tr>
+        <tr>
+            <td>Final Ammount @TempData["finalammount"]</td>
+        </tr>
+    </table>
+    @if(Model.Count()>0)
+    {
+        <a href="/CustomerOrder/Placeorder">Place Order</a>
+    }
+    
+</div>
